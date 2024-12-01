@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+
+    .error {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .overview {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow: hidden;
+      align-items: center;
+      padding: 0 16px;
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      padding: 16px;
+      overflow-y: auto;
+      width: 100%;
+    }    
+  }
+
+  mat-paginator {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}

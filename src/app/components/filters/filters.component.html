@@ -1,0 +1,26 @@
+@if (displayFilters) {
+  <div class="filter-container shadow">
+    <h3>Filters</h3>
+    <form [formGroup]="filterForm">
+      <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          @for (type of animalTypes$ | async; track type) {
+            <mat-option [value]="type">{{type}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+}
+<div class="header" [class.shadow]="!displayFilters">
+  <mat-icon fontIcon="tune" (click)="onDisplayFiltersToggle()"/>
+</div>

@@ -1,0 +1,21 @@
+@if (isLoading) {
+  <mat-spinner />
+}
+
+@if (animal$ | async; as animal) {
+  <div class="animal-details">
+    <div class="header">
+      <mat-icon fontIcon="arrow_back" (click)="onGoBackToOverview()"/>
+      <p class="name">{{animal.name}}</p>
+    </div>
+    <div class="image-container">
+      <img [src]="animal.images?.[0]">
+    </div>
+    <p>{{animal.age}}</p>
+    <p>{{animal.description}}</p>
+  </div>
+}
+
+@if (errorOccured) {
+  <p>Failed to load animal</p>
+}

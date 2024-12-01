@@ -1,0 +1,31 @@
+<div class="main">
+  @if (error$ | async; as error) {
+    <div class="error">
+      {{error}}
+      <button mat-raised-button (click)="onRetryGetAnimals()">Retry</button>
+    </div>
+  }
+  @else {
+    <app-filters />
+    <div class="overview">
+      @if (isLoading$ | async) {
+        <mat-spinner />
+      }
+      @else {
+        <div class="card-grid">
+          @for (animal of animals$ | async; track animal.id) {
+            <app-animal-card [animal]="animal" (click)="onViewAnimalDetails(animal.id)"/>
+          } 
+          @empty {
+            <div>No animals found</div>
+          }
+        </div>
+      }
+      <mat-paginator 
+        [length]="totalPages$ | async"
+        [pageSize]="20"
+        (page)="onPageChange($event)"
+        aria-label="Select page" />
+    </div>
+  }
+</div>

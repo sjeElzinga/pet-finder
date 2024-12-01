@@ -1,0 +1,17 @@
+<mat-card appearance="outlined">
+  <mat-card-content>
+    @if (animal(); as animal) {
+      <div class="image-container">
+        @if (animal.image; as image) {
+          <img [src]="image">
+        }
+      </div>
+      <div class="details">
+        <p class="name">{{animal.name}}</p>
+        <p>{{animal.gender}}</p>
+        <p>{{animal.type}}</p>
+        <p>{{animal.age}}</p>
+      </div>
+    }
+  </mat-card-content>
+</mat-card>
