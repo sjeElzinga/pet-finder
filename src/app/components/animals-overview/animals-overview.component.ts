@@ -4,7 +4,7 @@ import { FiltersComponent } from '../filters/filters.component';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { AnimalCardComponent } from '../animal-card/animal-card.component';
 import { BehaviorSubject, catchError, combineLatest, finalize, map, Observable, of, shareReplay, switchMap, tap } from 'rxjs';
-import { Animal, PetFinderService } from '../../services/pet-finder.service';
+import { Animal, PetFinderService, requestParams } from '../../services/pet-finder.service';
 import { FilterService } from '../../services/filter.service';
 import { Router } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -39,7 +39,8 @@ export class AnimalsOverviewComponent {
           this.error$.next(null);
         }),
         switchMap(([filterValues, pageNumber]) => {
-          return this.petFinderService.getAnimals({...filterValues, page: pageNumber})
+          const params: requestParams = {...filterValues, page: pageNumber};
+          return this.petFinderService.getAnimals(params)
             .pipe(
               map(response => ({
                 animals: response.animals.map((animal: any) => this.parseAnimal(animal)),

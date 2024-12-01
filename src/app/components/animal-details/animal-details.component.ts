@@ -46,6 +46,7 @@ export class AnimalDetailsComponent {
     this.router.navigate(['/']);
   }
 
+  
   private parseAnimal(animal: any): Animal {
     const {id, name, type, gender, age, description, photos} = animal;
     return {

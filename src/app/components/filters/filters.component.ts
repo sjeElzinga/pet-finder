@@ -24,8 +24,8 @@ export class FiltersComponent {
   });
 
  constructor(
-  private filterService: FilterService,
-  private petFinderService: PetFinderService
+    private filterService: FilterService,
+    private petFinderService: PetFinderService
   ) {
     this.animalTypes$ = this.petFinderService.getAnimalTypes()
       .pipe(

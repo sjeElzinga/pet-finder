@@ -9,5 +9,5 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './animal-card.component.css'
 })
 export class AnimalCardComponent {
- public animal = input<any>();
+ public animal = input<Animal>();
 }
